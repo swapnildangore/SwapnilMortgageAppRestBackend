@@ -5,19 +5,33 @@ package com.mymortgagaeapp.data.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * @author Swapnil Dangore
  *
  */
-public class MortgageApplication {
+public class MortgageApplication implements Comparable<MortgageApplication>{
 
+	
+	@NotNull
 	String mortgageId;
+	@NotNull
 	String version;
+	@NotNull
 	String offerId;
+	@NotNull
 	String productId;
-	String offerDate;
-	String createdDate;
+	@NotNull
+	@JsonFormat(pattern="dd/MM/yyyy")
+	Date offerDate;
+	@NotNull
+	@JsonFormat(pattern="dd/MM/yyyy")
+	Date createdDate;
 	boolean offerExpired;
+	
 	/**
 	 * @return the mortgageId
 	 */
@@ -69,25 +83,25 @@ public class MortgageApplication {
 	/**
 	 * @return the offerDate
 	 */
-	public String getOfferDate() {
+	public Date getOfferDate() {
 		return offerDate;
 	}
 	/**
 	 * @param offerDate the offerDate to set
 	 */
-	public void setOfferDate(String offerDate) {
+	public void setOfferDate(Date offerDate) {
 		this.offerDate = offerDate;
 	}
 	/**
 	 * @return the createdDate
 	 */
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 	/**
 	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 	/**
@@ -102,5 +116,32 @@ public class MortgageApplication {
 	public void setOfferExpired(boolean offerExpired) {
 		this.offerExpired = offerExpired;
 	}
-
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((mortgageId == null) ? 0 : mortgageId.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MortgageApplication other = (MortgageApplication) obj;
+		if (mortgageId == null) {
+			if (other.mortgageId != null)
+				return false;
+		} else if (!mortgageId.equals(other.mortgageId))
+			return false;
+		return true;
+	}
+	@Override
+	public int compareTo(MortgageApplication other) {
+		return this.createdDate.compareTo(other.createdDate);
+	}
+	
 }
