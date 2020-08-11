@@ -9,11 +9,11 @@
 		<version>2.3.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.mymortgagaeapp.core</groupId>
-	<artifactId>MyMortgageAppCore</artifactId>
+	<groupId>com.learning.mymortgagaeapp</groupId>
+	<artifactId>MyMortgageAppRestBackend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MyMortgageAppCore</name>
-	<description>MyMortgageAppCore</description>
+	<description>MyMortgageAppRestBackend</description>
 
 	<properties>
 		<java.version>11</java.version>
